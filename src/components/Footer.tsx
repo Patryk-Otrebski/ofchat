@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import logo from '../assets/logo.svg';
 
 const Footer: React.FC = () => {
@@ -24,13 +24,13 @@ const Footer: React.FC = () => {
     <footer className="py-10 md:py-12 px-6 md:px-12 bg-dark text-white">
       <div className="container mx-auto">
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-10 md:mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 md:mb-12"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.div variants={item}>
+          <motion.div variants={item} className="sm:order-1">
             <div className="flex items-center mb-4">
               <img src={logo} alt="OFchat Logo" className="h-8" />
               <span className="ml-2 text-xl font-bold">OFchat</span>
@@ -44,21 +44,7 @@ const Footer: React.FC = () => {
                 className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"
                 whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                <FaFacebookF className="text-xs md:text-sm" />
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
                 <FaTwitter className="text-xs md:text-sm" />
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-              >
-                <FaInstagram className="text-xs md:text-sm" />
               </motion.a>
               <motion.a 
                 href="#" 
@@ -70,22 +56,12 @@ const Footer: React.FC = () => {
             </div>
           </motion.div>
           
-          <motion.div variants={item}>
+          <motion.div variants={item} className="sm:order-2 sm:text-right">
             <h3 className="text-lg font-bold mb-4">Firma</h3>
             <ul className="space-y-2">
               <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">O nas</Link></li>
               <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">Blog</Link></li>
               <li><Link to="/pricing" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">Cennik</Link></li>
-            </ul>
-          </motion.div>
-          
-          <motion.div variants={item}>
-            <h3 className="text-lg font-bold mb-4">Prawne</h3>
-            <ul className="space-y-2">
-              <li><Link to="/terms" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">Warunki korzystania</Link></li>
-              <li><Link to="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">Polityka prywatności</Link></li>
-              <li><Link to="/cookies" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">Cookies</Link></li>
-              <li><Link to="/gdpr" className="text-gray-400 hover:text-white transition-colors text-sm md:text-base">RODO</Link></li>
             </ul>
           </motion.div>
         </motion.div>
@@ -100,13 +76,10 @@ const Footer: React.FC = () => {
           <p className="text-gray-400 mb-4 md:mb-0 text-sm md:text-base">© 2025 OFchat. Wszelkie prawa zastrzeżone.</p>
           <div className="flex space-x-4">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <FaYoutube className="w-5 h-5 md:w-6 md:h-6" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <FaTwitter className="w-5 h-5 md:w-6 md:h-6" />
             </a>
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
-              <FaInstagram className="w-5 h-5 md:w-6 md:h-6" />
+              <FaLinkedinIn className="w-5 h-5 md:w-6 md:h-6" />
             </a>
           </div>
         </motion.div>

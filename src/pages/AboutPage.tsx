@@ -36,28 +36,14 @@ const AboutPage: React.FC = () => {
 
   const teamMembers = [
     {
-      name: "Anna Kowalska",
-      role: "CEO & Founder",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-      bio: "Anna ma ponad 10 lat doświadczenia w branży technologicznej i jest pasjonatką AI. Założyła OFchat, aby pomóc twórcom treści zwiększać przychody i oszczędzać czas."
+      name: "Jan",
+      role: "CEO & Co-founder",
+      bio: "Jan jest współzałożycielem OFchat oraz ekspertem w obszarze automatyzacji biznesowej i rozwoju chatbotów opartych o sztuczną inteligencję. Od kilku lat dostarcza autorskie rozwiązania technologiczne, które wspierają małe i średnie firmy w optymalizacji procesów oraz zwiększaniu sprzedaży. Jego misją jest nieustanne podnoszenie jakości usług poprzez innowacyjne wykorzystanie technologii AI."
     },
     {
-      name: "Piotr Nowak",
-      role: "CTO",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-      bio: "Piotr jest ekspertem w dziedzinie sztucznej inteligencji i uczenia maszynowego. Prowadzi zespół inżynierów odpowiedzialnych za rozwój technologii OFchat."
-    },
-    {
-      name: "Marta Wiśniewska",
-      role: "Head of Marketing",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
-      bio: "Marta ma bogate doświadczenie w marketingu cyfrowym i strategii marki. Pomaga twórcom OnlyFans maksymalizować ich potencjał biznesowy."
-    },
-    {
-      name: "Tomasz Kowalczyk",
-      role: "Lead Developer",
-      image: "https://randomuser.me/api/portraits/men/7.jpg",
-      bio: "Tomasz jest doświadczonym programistą z pasją do tworzenia intuicyjnych i wydajnych rozwiązań. Kieruje rozwojem platformy OFchat."
+      name: "Patryk",
+      role: "CEO & Co-founder",
+      bio: "Patryk to doświadczony współtwórca OFchat, specjalizujący się w projektowaniu oraz wdrażaniu chatbotów i zaawansowanych automatyzacji biznesowych dla sektora MŚP. Swoją karierę zawodową poświęcił rozwijaniu autorskich rozwiązań opartych na sztucznej inteligencji, które pomagają firmom zwiększać efektywność i wzmacniać relacje z klientami. Z pasją dba o każdy szczegół oferowanego oprogramowania, gwarantując najwyższy standard realizacji projektów."
     }
   ];
 
@@ -95,7 +81,7 @@ const AboutPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            O <span className="gradient-text">OFchat</span>
+            <span className="gradient-text">OFchat</span>
           </motion.h1>
           <motion.p 
             className="text-lg max-w-3xl mx-auto mb-8 text-gray-700"
@@ -207,7 +193,7 @@ const AboutPage: React.FC = () => {
           </motion.div>
           
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex justify-center gap-8 max-w-4xl mx-auto"
             ref={teamRef}
             variants={container}
             initial="hidden"
@@ -216,17 +202,12 @@ const AboutPage: React.FC = () => {
             {teamMembers.map((member, index) => (
               <motion.div 
                 key={index} 
-                className="bg-light p-6 rounded-xl card-shadow text-center"
+                className="bg-light p-8 rounded-xl card-shadow text-center w-full max-w-md"
                 variants={item}
                 whileHover={{ scale: 1.03 }}
               >
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-white shadow-md"
-                />
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-primary font-medium mb-3">{member.role}</p>
+                <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
+                <p className="text-primary font-medium mb-4">{member.role}</p>
                 <p className="text-gray-700">{member.bio}</p>
               </motion.div>
             ))}

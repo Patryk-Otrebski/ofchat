@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import { FaRobot, FaMoneyBillWave, FaClock, FaUsers, FaArrowRight, FaCheck } from 'react-icons/fa';
 import CountUp from 'react-countup';
 import HeroSection from '../components/HeroSection';
-import TestimonialCard from '../components/TestimonialCard';
 
 const HomePage: React.FC = () => {
   const [featuresRef, featuresInView] = useInView({
@@ -28,11 +27,6 @@ const HomePage: React.FC = () => {
   });
 
   const [faqRef, faqInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
-  const [testimonialsRef, testimonialsInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
@@ -166,36 +160,12 @@ const HomePage: React.FC = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Aleksandra K.",
-      role: "Twórczyni treści",
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
-      content: "OFchat całkowicie zrewolucjonizował sposób, w jaki komunikuję się z fanami. Oszczędzam co najmniej 3 godziny dziennie, a moje przychody wzrosły o 40% w ciągu pierwszego miesiąca!",
-      rating: 5
-    },
-    {
-      name: "Michał T.",
-      role: "Model OnlyFans",
-      image: "https://randomuser.me/api/portraits/men/2.jpg",
-      content: "Początkowo byłem sceptyczny, ale OFchat przekroczył moje oczekiwania. Chatbot jest tak naturalny, że fani często nie wiedzą, że nie rozmawiają ze mną. Zdecydowanie warto!",
-      rating: 5
-    },
-    {
-      name: "Natalia W.",
-      role: "Influencerka",
-      image: "https://randomuser.me/api/portraits/women/3.jpg",
-      content: "Dzięki OFchat mogę skupić się na tworzeniu treści, zamiast spędzać godziny na odpowiadaniu na te same pytania. Moi fani są bardziej zadowoleni, a ja mam więcej czasu dla siebie.",
-      rating: 4
-    }
-  ];
-
   return (
     <div className="pt-16">
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Stats Section */}
+      {/* Stats Section
       <section className="py-12 md:py-16 px-6 md:px-12 bg-light">
         <div 
           className="container mx-auto"
@@ -227,7 +197,7 @@ const HomePage: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features Section */}
       <section id="features" className="py-16 md:py-20 px-6 md:px-12 bg-white">
@@ -307,36 +277,6 @@ const HomePage: React.FC = () => {
                 <h3 className="text-lg md:text-xl font-bold mb-2">{benefit.title}</h3>
                 <p className="text-sm md:text-base">{benefit.description}</p>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-20 px-6 md:px-12 bg-light">
-        <div className="container mx-auto">
-          <motion.div 
-            className="text-center mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Co mówią nasi <span className="gradient-text">klienci</span></h2>
-            <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
-              Poznaj historie sukcesu twórców, którzy już korzystają z OFchat.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-            ref={testimonialsRef}
-            variants={container}
-            initial="hidden"
-            animate={testimonialsInView ? "show" : "hidden"}
-          >
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} testimonial={testimonial} index={index} />
             ))}
           </motion.div>
         </div>

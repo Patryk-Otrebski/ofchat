@@ -7,10 +7,36 @@ const HeroSection: React.FC = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  // Target date: April 3rd, 2025
+  const targetDate = new Date('2025-04-03T00:00:00').getTime();
+
+  // Update countdown timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Conversation messages: even index: fan's message, odd index: twórczyni's message.
   const messages = [
-    "Hej, Twoje zdjęcia w stringach to czysty ogień, wyglądasz rewelacyjnie. Coś jeszcze w takim stylu?",
+    "Hej, Twoje zdjęcia w stringach to czysty ogień, wyglądasz rewelacyjnie. Mógłbym na Ciebie patrzeć bez końca!",
     "Hejka! Właśnie skończyłam sesję, gdzie stringi są tylko małą częścią opowieści. Mam też kilka fotek, w których pokażę się nieco bardziej, tylko dla tych, co lubią niespodzianki. 😈",
     "Wow, to brzmi naprawdę kusząco, nie mogę się doczekać, żeby to zobaczyć!",
     "Mam dla Ciebie coś wyjątkowego, prywatną galerię pełną pikantnych ujęć, które rozpalą Twoją wyobraźnię. Daj mi znać, a prześlę Ci link, żebyś mógł sprawdzić, co dla Ciebie przygotowałam. 😘"
@@ -41,8 +67,35 @@ const HeroSection: React.FC = () => {
   // Wyświetlamy wszystkie wiadomości do aktualnego indeksu
   const displayedMessages = messages.slice(0, currentMessageIndex + 1);
 
+  const CountdownBox = ({ value, label }: { value: number; label: string }) => (
+    <div className="flex flex-col items-center bg-white rounded-xl shadow-lg p-6 w-32 md:w-40">
+      <span className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        {value.toString().padStart(2, '0')}
+      </span>
+      <span className="text-base md:text-lg text-gray-600 mt-2">{label}</span>
+    </div>
+  );
+
   return (
-    <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-6 md:px-12 bg-gradient-to-b from-light to-white overflow-hidden">
+    <section className="pt-16 md:pt-20 pb-16 md:pb-20 px-6 md:px-12 bg-gradient-to-b from-light to-white overflow-hidden">
+      {/* Countdown Timer - Now at the top */}
+      <motion.div
+        className="container mx-auto mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Zaczynamy już za:
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4">
+          <CountdownBox value={timeLeft.days} label="Dni" />
+          <CountdownBox value={timeLeft.hours} label="Godzin" />
+          <CountdownBox value={timeLeft.minutes} label="Minut" />
+          <CountdownBox value={timeLeft.seconds} label="Sekund" />
+        </div>
+      </motion.div>
+
       <div className="container mx-auto flex flex-col md:flex-row items-center">
         {/* Lewy panel – statyczna część */}
         <motion.div 
@@ -67,6 +120,7 @@ const HeroSection: React.FC = () => {
           >
             Automatyzuj komunikację z fanami, oszczędzaj czas i zwiększaj swoje przychody dzięki inteligentnym chatbotom zaprojektowanym specjalnie dla twórców OnlyFans.
           </motion.p>
+
           <motion.div 
             className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
             initial={{ opacity: 0, y: 20 }}
