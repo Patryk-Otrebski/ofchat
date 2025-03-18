@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaCheck } from 'react-icons/fa';
+import { FaEnvelope, FaClock, FaTwitter, FaInstagram, FaLinkedinIn, FaCheck } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -114,86 +115,61 @@ const ContactPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-2xl font-bold mb-6">Informacje kontaktowe</h2>
-              <motion.div 
-                className="space-y-6"
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-              >
-                <motion.div className="flex items-start" variants={item}>
-                  <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                    <FaMapMarkerAlt />
-                  </div>
-                  <div>
-                    <h3 className="font-bold">Adres</h3>
-                    <p className="text-gray-700">ul. Przykładowa 123<br />00-001 Warszawa<br />Polska</p>
-                  </div>
+              <div className="text-center">
+                <h2 className="text-2xl font-bold mb-6">Informacje kontaktowe</h2>
+                <motion.div 
+                  className="space-y-6"
+                  variants={container}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                >
+                  <motion.div className="flex flex-col items-center" variants={item}>
+                    <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mb-4">
+                      <FaEnvelope />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Email</h3>
+                      <p className="text-gray-700">contact@ofchat.pl</p>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div className="flex flex-col items-center" variants={item}>
+                    <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mb-4">
+                      <FaClock />
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Godziny pracy</h3>
+                      <p className="text-gray-700">Poniedziałek - Piątek: 9:00 - 17:00<br />Sobota - Niedziela: Zamknięte</p>
+                    </div>
+                  </motion.div>
                 </motion.div>
                 
-                <motion.div className="flex items-start" variants={item}>
-                  <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                    <FaPhone />
+                <div className="mt-8">
+                  <h3 className="font-bold mb-4">Śledź nas</h3>
+                  <div className="flex justify-center space-x-4">
+                    <motion.a 
+                      href="#" 
+                      className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <FaTwitter />
+                    </motion.a>
+                    <motion.a 
+                      href="#" 
+                      className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <FaInstagram />
+                    </motion.a>
+                    <motion.a 
+                      href="#" 
+                      className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <FaLinkedinIn />
+                    </motion.a>
                   </div>
-                  <div>
-                    <h3 className="font-bold">Telefon</h3>
-                    <p className="text-gray-700">+48 123 456 789</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div className="flex items-start" variants={item}>
-                  <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                    <FaEnvelope />
-                  </div>
-                  <div>
-                    <h3 className="font-bold">Email</h3>
-                    <p className="text-gray-700">kontakt@ofchat.pl</p>
-                  </div>
-                </motion.div>
-                
-                <motion.div className="flex items-start" variants={item}>
-                  <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-4">
-                    <FaClock />
-                  </div>
-                  <div>
-                    <h3 className="font-bold">Godziny pracy</h3>
-                    <p className="text-gray-700">Poniedziałek - Piątek: 9:00 - 17:00<br />Sobota - Niedziela: Zamknięte</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-              
-              <div className="mt-8">
-                <h3 className="font-bold mb-4">Śledź nas</h3>
-                <div className="flex space-x-4">
-                  <motion.a 
-                    href="#" 
-                    className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <FaFacebookF />
-                  </motion.a>
-                  <motion.a 
-                    href="#" 
-                    className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <FaTwitter />
-                  </motion.a>
-                  <motion.a 
-                    href="#" 
-                    className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <FaInstagram />
-                  </motion.a>
-                  <motion.a 
-                    href="#" 
-                    className="w-10 h-10 rounded-full bg-light flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <FaLinkedinIn />
-                  </motion.a>
                 </div>
               </div>
             </motion.div>
@@ -311,7 +287,7 @@ const ContactPage: React.FC = () => {
                           className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
                         />
                         <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-700">
-                          Akceptuję <a href="/terms" className="text-primary hover:underline">warunki korzystania</a> z usługi i wyrażam zgodę na przetwarzanie moich danych osobowych *
+                          Akceptuję <Link to="/privacy-policy" className="text-primary hover:underline">politykę prywatności</Link> i wyrażam zgodę na przetwarzanie moich danych osobowych *
                         </label>
                       </div>
                     </div>
@@ -329,43 +305,6 @@ const ContactPage: React.FC = () => {
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16 px-6 md:px-12 bg-light">
-        <div className="container mx-auto">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-bold mb-4">Znajdź <span className="gradient-text">nas</span></h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Odwiedź nas w naszej siedzibie w centrum Warszawy.
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            className="rounded-xl overflow-hidden card-shadow"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.3889753703584!2d21.00717431579626!3d52.23235197976201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc8c92692e49%3A0xc2e97552d0cff142!2sPa%C5%82ac%20Kultury%20i%20Nauki!5e0!3m2!1spl!2spl!4v1651233033009!5m2!1spl!2spl" 
-              width="100%" 
-              height="450" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa lokalizacji"
-            ></iframe>
-          </motion.div>
         </div>
       </section>
 
