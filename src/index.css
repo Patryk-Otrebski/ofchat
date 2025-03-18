@@ -15,19 +15,21 @@ body {
   background-color: var(--light);
 }
 
-.gradient-text {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-bg {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-}
-
-.card-shadow {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* Smooth scrolling */
